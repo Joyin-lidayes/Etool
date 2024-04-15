@@ -1,0 +1,50 @@
+# getLog:
+#     describe: get logs in device
+#     Windows:
+#     Linux:
+#         cmd: ./script/getlog.py ./
+#         threshold: pass
+#         timeout: 50
+
+getLog:
+    describe: get logs in device
+    Windows:
+    Linux:
+        cmd: ./script/getlog.py ./
+        threshold: 
+        timeout: 
+
+getScreenshot:
+    describe: get Screenshot in device
+    Windows:
+    Linux:
+        cmd: ./script/getScreenshot.py ./
+        threshold: 
+        timeout: 5
+
+flashimg:
+    describe: flash img use upg tool in sk, Usage:Etool flashimg tool img
+    Windows:
+        cmd: [$1,uf,$2]
+        threshold: pass
+        timeout: 500
+    Linux:
+        cmd: [$1,uf,$2]
+        threshold: pass
+        timeout: 500
+
+cleanRITFlag:
+    describe: clean RIT flag
+    Windows:
+    Linux:
+        cmd: adb shell rm /data/hq_auto_test/flags/RU*
+        threshold: pass
+        timeout: 5
+
+setMMIFlag:
+    describe: set mmi flag and open RIT setting
+    Windows:
+    Linux:
+        cmd: adb shell "mkdir -p /data/hq_auto_test/flags/ && touch /data/hq_auto_test/flags/PHONEMMI1.FLG && setprop persist.runin.setting.enable true"
+        threshold: 
+        timeout: 5
